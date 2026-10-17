@@ -33,14 +33,14 @@ public class VehiculeController {
                 iVehicule.afficherVehicules());
     }
 
-    @GetMapping("/GetById{id}")
+    @GetMapping("/GetById/{id}")
     public ResponseEntity<Vehicule> afficherParId(
             @PathVariable Long id) {
         return ResponseEntity.ok(
                 iVehicule.afficherVehicule(id));
     }
 
-    @PutMapping("/PutById{id}")
+    @PutMapping("/PutById/{id}")
     public ResponseEntity<Vehicule> modifier(
             @PathVariable Long id,
             @Valid @RequestBody Vehicule vehicule) {
@@ -49,11 +49,11 @@ public class VehiculeController {
                 iVehicule.modifierVehicule(id, vehicule));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> supprimer(
+    @DeleteMapping("/Delete/{id}")
+    public void supprimer(
             @PathVariable Long id) {
 
         iVehicule.supprimerVehicule(id);
-        return ResponseEntity.noContent().build();
+
     }
 }

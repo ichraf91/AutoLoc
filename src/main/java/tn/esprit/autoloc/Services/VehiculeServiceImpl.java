@@ -26,7 +26,6 @@ public class VehiculeServiceImpl implements IVehicule{
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Vehicule afficherVehicule(Long id) {
         return vehiculeRepo.findById(id)
                 .orElseThrow(() ->
@@ -64,6 +63,6 @@ public class VehiculeServiceImpl implements IVehicule{
                         new RuntimeException(
                                 "Véhicule introuvable avec l'identifiant : " + id
                         ));
-
+        vehiculeRepo.deleteById(id);
 
     }}

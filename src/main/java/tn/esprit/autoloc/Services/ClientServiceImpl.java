@@ -15,8 +15,8 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements IClient{
-     private final ClientRepo clientRepo;
 
+   private final ClientRepo clientRepo;
 
     @Override
     public Client ajouterClient(Client cl) {

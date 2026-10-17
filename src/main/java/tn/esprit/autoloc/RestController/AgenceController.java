@@ -33,8 +33,8 @@ public class AgenceController {
     public Agence updateAgence(@RequestBody Agence a){
         return iAgence.updateAgence(a);
     }
-    @DeleteMapping("/deleteAgenceById/{ID}")
-    public void updateAgence(@PathVariable long id){
+    @DeleteMapping("/deleteAgenceById/{id}")
+    public void updateAgence(@PathVariable Long id){
         iAgence.deleteAgence(id);
     }
 
