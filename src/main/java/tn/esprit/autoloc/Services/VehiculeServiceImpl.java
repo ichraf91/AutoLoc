@@ -3,7 +3,12 @@ package tn.esprit.autoloc.Services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tn.esprit.autoloc.Entities.Agence;
+import tn.esprit.autoloc.Entities.Equipement;
+import tn.esprit.autoloc.Entities.StatutVehicule;
 import tn.esprit.autoloc.Entities.Vehicule;
+import tn.esprit.autoloc.Repositories.AgenceRepo;
+import tn.esprit.autoloc.Repositories.EquipementRepo;
 import tn.esprit.autoloc.Repositories.VehiculeRepo;
 
 import java.util.List;
@@ -13,6 +18,8 @@ import java.util.List;
 @Transactional
 public class VehiculeServiceImpl implements IVehicule{
     private final VehiculeRepo  vehiculeRepo;
+    private final AgenceRepo agenceRepo;
+    private final EquipementRepo equipementRepo;
 
     @Override
     public Vehicule ajouterVehicule(Vehicule vehicule) {
@@ -65,4 +72,19 @@ public class VehiculeServiceImpl implements IVehicule{
                         ));
         vehiculeRepo.deleteById(id);
 
-    }}
+    }
+
+    @Override
+    public Vehicule affecterVehicule(Long idVehicule, Long idAgence) {
+        Vehicule vehicule = vehiculeRepo.findById(idVehicule)
+                .orElseThrow();
+        Agence agence = agenceRepo.findById(idAgence)
+                .orElseThrow();
+        vehicule.setAgence(agence);
+        vehicule.setStatut(StatutVehicule.DISPONIBLE);
+        return vehiculeRepo.save(vehicule);
+    }
+
+
+    }
+

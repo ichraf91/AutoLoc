@@ -1,5 +1,7 @@
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,9 +33,12 @@ public class Agence {
     private String telephone;
 
     @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    @JsonIgnore
      Set<Employe> employes;
 
     @OneToMany(mappedBy = "agence")
+    //@JsonIgnore
+    //@JsonManagedReference
     Set<Vehicule> vehicules;
 
 }

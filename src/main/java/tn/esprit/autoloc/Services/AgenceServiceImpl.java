@@ -18,8 +18,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AgenceServiceImpl implements IAgence {
-
-private final AgenceRepo agenceRepo;
+   private final AgenceRepo agenceRepo;
 
     @Override
     public Agence addAgence(Agence agence) {

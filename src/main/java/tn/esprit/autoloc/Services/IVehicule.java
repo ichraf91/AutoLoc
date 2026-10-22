@@ -14,4 +14,6 @@ public interface IVehicule {
     Vehicule modifierVehicule(Long id, Vehicule vehicule);
 
     void supprimerVehicule(Long id);
+    public Vehicule affecterVehicule(Long idVehicule, Long idAgence);
+
 }

@@ -30,6 +30,6 @@ public class Employe {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agence_id")
-    @JsonBackReference("agence-employe")
+    //@JsonBackReference("agence-employe")
     private Agence agence;
 }
