@@ -2,7 +2,9 @@ package tn.esprit.autoloc.Services;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Agence;
 import tn.esprit.autoloc.Entities.Employe;
@@ -16,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AgenceServiceImpl implements IAgence {
@@ -54,6 +56,10 @@ public class AgenceServiceImpl implements IAgence {
         return agenceRepo.save(agence);
     }
 
+//    @Scheduled(fixedRate = 5000)
+//    public void fixedDelayMethod() {
+//        log.info("Method with fixed Delay");
+//    }
 
 
 }
