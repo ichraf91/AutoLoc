@@ -1,5 +1,7 @@
 package tn.esprit.autoloc.Services;
 
+import tn.esprit.autoloc.DTO.ClientRequestDto;
+import tn.esprit.autoloc.DTO.ClientResponseDto;
 import tn.esprit.autoloc.Entities.Client;
 
 import java.util.List;
@@ -12,4 +14,7 @@ public interface IClient {
     Set<Client> findClients();
     Client recupererClientByid(long idClient);
     Client updateClient(Client cl);
+    ClientResponseDto ajouterClient(ClientRequestDto dto);
+
+    ClientResponseDto recupererClient(Long idClient);
 }

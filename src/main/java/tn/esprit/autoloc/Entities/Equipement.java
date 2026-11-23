@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,5 +28,6 @@ public class Equipement {
     private String libelle;
 
     @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
-    Set<Vehicule>vehicules;
+    @JsonBackReference
+    Set<Vehicule>vehicules = new HashSet<Vehicule>();
 }

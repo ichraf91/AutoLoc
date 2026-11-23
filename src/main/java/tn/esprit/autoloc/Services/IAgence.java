@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.Services;
 
+import tn.esprit.autoloc.DTO.AgenceDto;
 import tn.esprit.autoloc.Entities.Agence;
 import tn.esprit.autoloc.Entities.Vehicule;
 
@@ -13,6 +14,8 @@ public interface IAgence {
     List<Agence> retrieveAgences();
     Agence retrieveById( long id);
     Agence updateAgence(Agence agence);
-
+    AgenceDto recupererAgenceDto(Long id);
+    List<AgenceDto>recuperertteslesagences();
+    AgenceDto addAgenceDto(AgenceDto agenceDto);
 
 }

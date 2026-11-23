@@ -23,11 +23,12 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private LocalDate dateSignature;
-
-    private BigDecimal montantTotal;
-    private boolean valide = false;
+    private String nom;
+    private String prenom;
+    private String email;
+    private  String telephone;
+    private  String numPermis;
+    private LocalDate dateInscription;
     @OneToMany(mappedBy = "client")
     Set<Reservation> reservations;
 

@@ -18,7 +18,7 @@ public class EmployeServiceImpl implements IEmploye {
     public Employe desaffecterEmploye(Long idEmploye) {
         Employe employe = employeRepo.findById(idEmploye).get();
 
-        Agence agence = employe.getAgence();
+        //Agence agence = employe.getAgence();
         employe.setAgence(null);
         return employeRepo.save(employe);
     }

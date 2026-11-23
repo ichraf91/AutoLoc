@@ -26,7 +26,7 @@ public class ReservationServiceImpl implements IReservation {
         reservationRepo.saveAll(reservations);
     }
 
-    @Scheduled(fixedRate = 30000)
-    public void verifierReservations() {
-        terminerReservationsExpirees();    }
+//    @Scheduled(fixedRate = 30000)
+//    public void verifierReservations() {
+//        terminerReservationsExpirees();    }
 }

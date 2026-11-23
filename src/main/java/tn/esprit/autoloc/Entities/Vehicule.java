@@ -8,6 +8,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -72,7 +73,9 @@ public class Vehicule {
     @JsonIgnore
     Agence agence;
     @ManyToMany
-    Set<Equipement> equipements;
+    @JsonManagedReference
+    Set<Equipement> equipements= new HashSet<Equipement>();
+
 
 
 }

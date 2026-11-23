@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.autoloc.DTO.ClientRequestDto;
+import tn.esprit.autoloc.DTO.ClientResponseDto;
 import tn.esprit.autoloc.Entities.Client;
 import tn.esprit.autoloc.Repositories.ClientRepo;
 
@@ -17,6 +19,7 @@ import java.util.Set;
 public class ClientServiceImpl implements IClient{
 
    private final ClientRepo clientRepo;
+   private final IClientMapper clientMapper;
 
     @Override
     public Client ajouterClient(Client cl) {
@@ -49,5 +52,28 @@ public class ClientServiceImpl implements IClient{
     @Override
     public Client updateClient(Client cl) {
         return clientRepo.save(cl);
+    }
+
+    @Override
+    public ClientResponseDto ajouterClient(ClientRequestDto dto) {
+
+        // Conversion DTO vers Entity
+        Client client = clientMapper.toEntity(dto);
+
+        // Enregistrement dans la base de données
+        Client savedClient = clientRepo.save(client);
+
+        // Conversion Entity vers ResponseDTO
+        return clientMapper.toDto(savedClient);
+    }
+
+    @Override
+    public ClientResponseDto recupererClient(Long idClient) {
+
+        Client client = clientRepo.findById(idClient)
+                .orElseThrow(() ->
+                        new RuntimeException("Client introuvable"));
+
+        return clientMapper.toDto(client);
     }
 }

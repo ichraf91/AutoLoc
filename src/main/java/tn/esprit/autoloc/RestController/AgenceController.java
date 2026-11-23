@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.autoloc.DTO.AgenceDto;
 import tn.esprit.autoloc.Entities.Agence;
 import tn.esprit.autoloc.Services.IAgence;
 
@@ -17,6 +18,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AgenceController {
    private final IAgence iAgence;
+
 @Operation(description = "ajouter un objet agence dans la BD")
     @PostMapping("/addAgence")
     public Agence ajouterAgence(@RequestBody Agence a){
@@ -40,6 +42,21 @@ public class AgenceController {
     @DeleteMapping("/deleteAgenceById/{id}")
     public void updateAgence(@PathVariable Long id){
         iAgence.deleteAgence(id);
+    }
+
+
+    @GetMapping("/GetAgenceDto/{id}")
+    public AgenceDto recupererAgenceDto(@PathVariable Long id) {
+        return iAgence.recupererAgenceDto(id);
+    }
+    @GetMapping("/GetALLAgencyDto")
+    public List<AgenceDto> recupererAllDto() {
+        return iAgence.recuperertteslesagences();
+    }
+
+    @PostMapping("AddAgencyDto")
+    public AgenceDto ajouterAgenceDto(@RequestBody AgenceDto dto) {
+        return iAgence.addAgenceDto(dto);
     }
 
 }
